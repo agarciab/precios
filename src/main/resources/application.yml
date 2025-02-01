@@ -1,0 +1,43 @@
+server:
+  compression:
+    enabled: true
+  servlet:
+    context-path: /precios
+
+management:
+  security:
+    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: health,prometheus
+    health:
+      sensitive: false
+  endpoint:
+    health:
+      show-details: always
+      show-components: always
+    prometheus:
+      enabled: true
+  metrics:
+    tags:
+      application: ${spring.application.name}
+  tracing.sampling.probability: 1.0
+
+info:
+  app:
+    encoding: '@project.build.sourceEncoding@'
+    java:
+      source: '@java.version@'
+      target: '@java.version@'
+
+spring:
+  application:
+    name: precios
+  project:
+    version: '@project.version@'
+    buildTimestamp: '@timestamp@'
+  jackson:
+    date-format: yyyy-MM-dd'T'HH:mm:ss.SSSXXX
+  jpa:
+    open-in-view: false
