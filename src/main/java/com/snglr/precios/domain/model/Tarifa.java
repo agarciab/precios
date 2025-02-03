@@ -7,6 +7,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
 
+/**
+ * Representa la tarifa de un producto para una marca en un rango de fechas.
+ * <p>
+ * La clase Tarifa es el modelo de dominio que contiene la información necesaria
+ * para determinar el precio aplicable.
+ * </p>
+ */
 @Getter
 @AllArgsConstructor
 @ToString
@@ -21,7 +28,10 @@ public class Tarifa {
     private final String curr;
 
     /**
-     * Indica si la tarifa es aplicable para una fecha dada.
+     * Verifica si la tarifa es aplicable para la fecha indicada.
+     *
+     * @param applicationDate la fecha de aplicación
+     * @return {@code true} si la fecha está dentro del rango de la tarifa, de lo contrario {@code false}
      */
     public boolean isApplicable(LocalDateTime applicationDate) {
         return (applicationDate.isEqual(startDate) || applicationDate.isAfter(startDate))
