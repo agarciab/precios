@@ -43,4 +43,10 @@ spring:
     date-format: yyyy-MM-dd'T'HH:mm:ss.SSSXXX
   jpa:
     open-in-view: false
-  sql.init.mode: never
+  ## Solo entorno dev
+    defer-datasource-initialization: true  
+  ## Entorno Productivo
+  # sql.init.mode: never
+  ## Solo entorno dev
+  sql.init.mode: always
+  
