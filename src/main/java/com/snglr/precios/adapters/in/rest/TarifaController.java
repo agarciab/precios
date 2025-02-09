@@ -58,7 +58,7 @@ public class TarifaController {
             @RequestParam("productId") Long productId,
             @RequestParam("brandId") Long brandId
     ) {
-        Tarifa result = consultarTarifaUseCase.consultarTarifa(applicationDate, productId, brandId);
+        Tarifa result = consultarTarifaUseCase.execute(applicationDate, productId, brandId);
         return tarifaResponseMapper.toTarifaResponse(result);
     }
 }

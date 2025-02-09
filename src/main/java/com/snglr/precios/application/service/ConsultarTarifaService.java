@@ -34,7 +34,7 @@ public class ConsultarTarifaService implements ConsultarTarifaUseCase {
      * @throws TarifaNotFoundException si no se encuentra la tarifa
      */
     @Override
-    public Tarifa consultarTarifa(LocalDateTime applicationDate, Long productId, Long brandId) {
+    public Tarifa execute(LocalDateTime applicationDate, Long productId, Long brandId) {
         return tarifaRepository.findTarifa(applicationDate, productId, brandId)
                 .orElseThrow(() -> new TarifaNotFoundException("No se encontró tarifa para los criterios indicados"));
     }

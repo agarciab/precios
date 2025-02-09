@@ -8,5 +8,5 @@ public interface ConsultarTarifaUseCase {
     /**
      * Consulta la tarifa aplicable dada una fecha de aplicación, producto y cadena.
      */
-    Tarifa consultarTarifa(LocalDateTime applicationDate, Long productId, Long brandId);
+    Tarifa execute(LocalDateTime applicationDate, Long productId, Long brandId);
 }
