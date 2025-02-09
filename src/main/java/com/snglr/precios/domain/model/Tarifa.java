@@ -23,7 +23,6 @@ public class Tarifa {
     private final LocalDateTime endDate;
     private final Integer priceList;
     private final Long productId;
-    private final Integer priority;
     private final BigDecimal price;
     private final String curr;
 

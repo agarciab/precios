@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.snglr.precios.adapters.in.rest.mapper.TarifaResponseMapper;
-import com.snglr.precios.application.dto.TarifaResult;
 import com.snglr.precios.application.ports.in.ConsultarTarifaUseCase;
+import com.snglr.precios.domain.model.Tarifa;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -58,7 +58,7 @@ public class TarifaController {
             @RequestParam("productId") Long productId,
             @RequestParam("brandId") Long brandId
     ) {
-        TarifaResult result = consultarTarifaUseCase.consultarTarifa(applicationDate, productId, brandId);
+        Tarifa result = consultarTarifaUseCase.consultarTarifa(applicationDate, productId, brandId);
         return tarifaResponseMapper.toTarifaResponse(result);
     }
 }

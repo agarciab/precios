@@ -4,10 +4,9 @@ import java.time.LocalDateTime;
 
 import org.springframework.stereotype.Service;
 
-import com.snglr.precios.application.dto.TarifaResult;
-import com.snglr.precios.application.mapper.TarifaResultMapper;
 import com.snglr.precios.application.ports.in.ConsultarTarifaUseCase;
 import com.snglr.precios.domain.exception.TarifaNotFoundException;
+import com.snglr.precios.domain.model.Tarifa;
 import com.snglr.precios.domain.repository.TarifaRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -24,7 +23,6 @@ import lombok.RequiredArgsConstructor;
 public class ConsultarTarifaService implements ConsultarTarifaUseCase {
 
     private final TarifaRepository tarifaRepository;
-    private final TarifaResultMapper tarifaResultMapper;
 
     /**
      * Consulta la tarifa aplicable para la fecha, producto y brand indicados.
@@ -32,13 +30,12 @@ public class ConsultarTarifaService implements ConsultarTarifaUseCase {
      * @param applicationDate la fecha y hora de aplicación
      * @param productId       el identificador del producto
      * @param brandId         el identificador de la marca
-     * @return un {@link TarifaResult} con los datos de la tarifa
+     * @return un {@link Tarifa} con los datos de la tarifa
      * @throws TarifaNotFoundException si no se encuentra la tarifa
      */
     @Override
-    public TarifaResult consultarTarifa(LocalDateTime applicationDate, Long productId, Long brandId) {
+    public Tarifa consultarTarifa(LocalDateTime applicationDate, Long productId, Long brandId) {
         return tarifaRepository.findTarifa(applicationDate, productId, brandId)
-                .map(tarifaResultMapper::toTarifaResult)
                 .orElseThrow(() -> new TarifaNotFoundException("No se encontró tarifa para los criterios indicados"));
     }
 }
