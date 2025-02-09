@@ -121,7 +121,7 @@ La suite de pruebas de integración se encuentra en el paquete `com.snglr.precio
 Para ejecutar los tests y generar el reporte de cobertura de código, utiliza el siguiente comando:
 
 ```bash
-mvn clean test jacoco:report
+mvn clean package -Pcoverage
 ```
 
 El informe es accesible en `target/site/jacoco/index.html`
